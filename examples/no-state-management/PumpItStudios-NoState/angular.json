@@ -26,13 +26,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -94,14 +89,40 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
+          }
+        }
+      }
+    },
+    "BaseComponents": {
+      "projectType": "library",
+      "root": "projects/base-components",
+      "sourceRoot": "projects/base-components/src",
+      "prefix": "pumpit",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/base-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/base-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/base-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/base-components/src/test.ts",
+            "tsConfig": "projects/base-components/tsconfig.spec.json",
+            "karmaConfig": "projects/base-components/karma.conf.js"
           }
         }
       }
