@@ -1,24 +1,28 @@
 <div class="grid">
-  <label for="user">
-    Username
-    <input
-      type="text"
-      id="username"
-      name="username"
-      placeholder="Username"
-      required
-    />
-  </label>
+  <form [formGroup]="loginForm">
+    <label for="user">
+      Username
+      <input
+        type="text"
+        formControlName="user"
+        id="username"
+        name="username"
+        placeholder="Username"
+        required
+      />
+    </label>
 
-  <label for="password">
-    Password
-    <input
-      type="text"
-      id="password"
-      name="password"
-      placeholder="Password"
-      required
-    />
-  </label>
+    <label for="password">
+      Password
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        name="password"
+        placeholder="Password"
+        required
+      />
+    </label>
+  </form>
 </div>
-<div role="button">Login</div>
+<div (click)="login()" role="button">Login</div>
