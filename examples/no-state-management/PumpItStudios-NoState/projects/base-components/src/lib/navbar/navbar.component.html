@@ -1,10 +1,15 @@
 <nav>
   <ul>
     <li>
-      <strong><a href="/">PumpIT</a></strong>
+      <strong><a [routerLink]="['/login']">PumpIT</a></strong>
     </li>
   </ul>
   <ul>
-    <li><a role="button" [routerLink]="['/login']">Login</a></li>
+    <li *ngIf="!currentUser">
+      <a role="button" [routerLink]="['/login']">Login</a>
+    </li>
+    <li *ngIf="currentUser">
+      <pumpit-profile [user]="currentUser"></pumpit-profile>
+    </li>
   </ul>
 </nav>

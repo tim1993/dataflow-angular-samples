@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IUser } from 'projects/base-components/src/lib/models/user.model';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
@@ -21,6 +22,8 @@ export class LoginComponent implements OnInit {
       user: ['', Validators.required],
       password: ['', Validators.required],
     });
+
+    this.redirectIfLoggedIn(this.authService.user);
   }
 
   login() {
@@ -33,10 +36,12 @@ export class LoginComponent implements OnInit {
         this.loginForm?.get('user')?.value,
         this.loginForm?.get('password')?.value
       )
-      .subscribe((user) => {
-        if (user) {
-          this.router.navigate(['/dashboard']);
-        }
-      });
+      .subscribe(this.redirectIfLoggedIn.bind(this));
+  }
+
+  private redirectIfLoggedIn(user?: IUser) {
+    if (user) {
+      this.router.navigate(['/dashboard']);
+    }
   }
 }
