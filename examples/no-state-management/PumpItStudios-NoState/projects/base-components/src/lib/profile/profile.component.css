@@ -1,10 +1,15 @@
 .profile-wrapper {
-  border-radius: 50%;
+  border-radius: 70%;
   border: 1px solid black;
-  height: 40px;
-  width: 40px;
+  height: 54px;
+  width: 54px;
+  margin: 0 auto;
   text-align: center;
-  line-height: 40px;
+  line-height: 54px;
   color: white;
   background-color: lightgray;
+}
+
+:host {
+  margin: 0 auto;
 }

@@ -1,4 +1,21 @@
-<main class="container-fluid">
-  <pumpit-navbar [currentUser]="authService.user"></pumpit-navbar>
-  <router-outlet></router-outlet>
-</main>
+<div class="shell">
+  <pumpit-nav-rail>
+    <pumpit-nav-rail-item
+      pumpRailTop
+      iconClass="md-fitness_center"
+    ></pumpit-nav-rail-item>
+
+    <pumpit-nav-rail-item
+      pumpRailItems
+      iconClass="md-dashboard"
+    ></pumpit-nav-rail-item>
+    <pumpit-nav-rail-item
+      pumpRailBottom
+      iconClass="md-account_circle"
+    ></pumpit-nav-rail-item>
+  </pumpit-nav-rail>
+
+  <main class="container-fluid">
+    <router-outlet></router-outlet>
+  </main>
+</div>

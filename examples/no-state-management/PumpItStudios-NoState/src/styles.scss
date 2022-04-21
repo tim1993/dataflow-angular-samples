@@ -1,2 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@picocss/pico/scss/pico.scss";
+@import "../node_modules/@material-icons/font/scss/all.scss";
+
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url(/font/MaterialIcons.woff2) format("woff2"),
+    url(/font/MaterialIcons.woff) format("woff"),
+    url(/font/MaterialIcons.ttf) format("truetype");
+}
