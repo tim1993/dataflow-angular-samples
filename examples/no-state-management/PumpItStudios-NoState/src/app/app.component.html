@@ -5,14 +5,26 @@
       iconClass="md-fitness_center"
     ></pumpit-nav-rail-item>
 
-    <pumpit-nav-rail-item
-      pumpRailItems
-      iconClass="md-dashboard"
-    ></pumpit-nav-rail-item>
-    <pumpit-nav-rail-item
-      pumpRailBottom
-      iconClass="md-account_circle"
-    ></pumpit-nav-rail-item>
+    <ng-container pumpRailItems *ngIf="authService.user">
+      <pumpit-nav-rail-item iconClass="md-dashboard"></pumpit-nav-rail-item>
+
+      <pumpit-nav-rail-item
+        iconClass="md-sports_gymnastics"
+      ></pumpit-nav-rail-item>
+    </ng-container>
+
+    <ng-container pumpRailBottom>
+      <pumpit-nav-rail-item
+        *ngIf="authService.user"
+        iconClass="md-account_circle"
+      ></pumpit-nav-rail-item>
+
+      <pumpit-nav-rail-item
+        (click)="router.navigate(['login'])"
+        *ngIf="!authService.user"
+        iconClass="md-login"
+      ></pumpit-nav-rail-item>
+    </ng-container>
   </pumpit-nav-rail>
 
   <main class="container-fluid">

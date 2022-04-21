@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
 
 @Component({
@@ -9,5 +10,8 @@ import { AuthenticationService } from './authentication.service';
 export class AppComponent {
   title = 'PumpItStudios-NoState';
 
-  constructor(public authService: AuthenticationService) {}
+  constructor(
+    public authService: AuthenticationService,
+    public router: Router
+  ) {}
 }
