@@ -8,6 +8,8 @@ import {
   NavItemBottomDirective,
   NavItemDirective,
 } from './nav-rail/nav-rail.directives';
+import { DashboardChartTileComponent } from './dashboard-chart-tile/dashboard-chart-tile.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,16 @@ import {
     NavRailItemComponent,
     NavItemDirective,
     NavItemBottomDirective,
+    DashboardChartTileComponent,
   ],
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, NgxEchartsModule.forChild()],
   exports: [
     NavRailComponent,
     ProfileComponent,
     NavRailItemComponent,
     NavItemDirective,
     NavItemBottomDirective,
+    DashboardChartTileComponent,
   ],
 })
 export class BaseComponentsModule {}
