@@ -2,11 +2,15 @@
   <pumpit-nav-rail>
     <pumpit-nav-rail-item
       pumpRailTop
+      [hover]="false"
       iconClass="md-fitness_center"
     ></pumpit-nav-rail-item>
 
     <ng-container pumpRailItems *ngIf="authService.user">
-      <pumpit-nav-rail-item iconClass="md-dashboard"></pumpit-nav-rail-item>
+      <pumpit-nav-rail-item
+        (click)="router.navigate(['dashboard'])"
+        iconClass="md-dashboard"
+      ></pumpit-nav-rail-item>
 
       <pumpit-nav-rail-item
         iconClass="md-sports_gymnastics"
@@ -15,6 +19,7 @@
 
     <ng-container pumpRailBottom>
       <pumpit-nav-rail-item
+        (click)="router.navigate(['profile'])"
         *ngIf="authService.user"
         iconClass="md-account_circle"
       ></pumpit-nav-rail-item>

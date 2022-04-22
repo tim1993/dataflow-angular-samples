@@ -1,7 +1,6 @@
 .nav-item {
   color: var(--secondary-inverse);
   text-align: center;
-  cursor: pointer;
   border: 2px solid;
   border-radius: 22px;
   padding: 4px;
@@ -17,6 +16,12 @@
   }
 }
 
-.nav-container:hover {
+.nav-container:not(.static) {
+  .nav-item {
+    cursor: pointer;
+  }
+}
+
+.nav-container:not(.static):hover {
   background-color: var(--primary-hover);
 }

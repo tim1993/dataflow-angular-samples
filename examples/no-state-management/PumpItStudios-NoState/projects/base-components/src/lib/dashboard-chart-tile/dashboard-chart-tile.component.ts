@@ -9,15 +9,13 @@ import { EChartsOption } from 'echarts';
 export class DashboardChartTileComponent implements OnInit {
   @Input() public chartTitle?: string;
 
-  public options: EChartsOption = {
+  @Input() public options?: EChartsOption = {
     xAxis: {
       type: 'category',
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      animation: false,
     },
     yAxis: {
       type: 'value',
-      animation: false,
     },
     series: [
       {
@@ -26,6 +24,7 @@ export class DashboardChartTileComponent implements OnInit {
         smooth: true,
       },
     ],
+    animation: false,
   };
   constructor() {}
 
