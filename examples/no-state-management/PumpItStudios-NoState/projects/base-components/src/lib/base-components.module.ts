@@ -10,6 +10,8 @@ import {
 } from './nav-rail/nav-rail.directives';
 import { DashboardChartTileComponent } from './dashboard-chart-tile/dashboard-chart-tile.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { StudioTileComponent } from './studio-tile/studio-tile.component';
+import { FeatureDisplayComponent } from './feature-display/feature-display.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
     NavItemDirective,
     NavItemBottomDirective,
     DashboardChartTileComponent,
+    StudioTileComponent,
+    FeatureDisplayComponent,
   ],
   imports: [RouterModule, CommonModule, NgxEchartsModule.forChild()],
   exports: [
@@ -28,6 +32,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     NavItemDirective,
     NavItemBottomDirective,
     DashboardChartTileComponent,
+    StudioTileComponent,
   ],
 })
 export class BaseComponentsModule {}

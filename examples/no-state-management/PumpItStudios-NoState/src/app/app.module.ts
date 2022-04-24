@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { StudiosListComponent } from './studios-list/studios-list.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     LoginComponent,
     DashboardComponent,
     ProfilePageComponent,
+    StudiosListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+<h3>{{ studio?.name }}</h3>
+<div>
+  <p class="address">
+    {{ studio?.address?.street }} {{ studio?.address?.city }}
+  </p>
+  <img [src]="studio?.pictureUrl" />
+  <div>
+    <progress max="100" [value]="studio?.rating"></progress>
+  </div>
+  <div></div>
+</div>
