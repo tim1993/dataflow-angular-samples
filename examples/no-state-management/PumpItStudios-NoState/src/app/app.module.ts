@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { StudiosListComponent } from './studios-list/studios-list.component';
+import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +21,13 @@ import { StudiosListComponent } from './studios-list/studios-list.component';
     DashboardComponent,
     ProfilePageComponent,
     StudiosListComponent,
+    AddAppointmentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     BaseComponentsModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),

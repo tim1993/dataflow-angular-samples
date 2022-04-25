@@ -33,6 +33,7 @@ import { FeatureDisplayComponent } from './feature-display/feature-display.compo
     NavItemBottomDirective,
     DashboardChartTileComponent,
     StudioTileComponent,
+    FeatureDisplayComponent,
   ],
 })
 export class BaseComponentsModule {}

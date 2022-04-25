@@ -1,7 +1,8 @@
-import { Studio, StudioFeature } from "../models/studio.model";
+import { Studio, StudioFeature } from '../models/studio.model';
 
 export const studios: Studio[] = [
   {
+    id: 1,
     name: 'PumpIT Fit&Pump Atlanta',
     address: {
       city: 'Atlanta',
@@ -9,13 +10,16 @@ export const studios: Studio[] = [
     },
     pictureUrl: 'assets/pics/studio.jpg',
     rating: 90,
+    premiumOnly: true,
     features: [
       { isPremium: false, feature: StudioFeature.Benches },
-      { isPremium: true, feature: StudioFeature.Cardio },
+      { isPremium: false, feature: StudioFeature.Cardio },
       { isPremium: true, feature: StudioFeature.PersonalTrainer },
+      { isPremium: true, feature: StudioFeature.Relaxing },
     ],
   },
   {
+    id: 2,
     name: 'Pump & Fun Berlin',
     address: {
       city: 'Berlin',
@@ -23,6 +27,7 @@ export const studios: Studio[] = [
     },
     pictureUrl: 'assets/pics/studio1.jpg',
     rating: 50,
+    premiumOnly: true,
     features: [
       { isPremium: false, feature: StudioFeature.Benches },
       { isPremium: true, feature: StudioFeature.Cardio },
@@ -30,6 +35,7 @@ export const studios: Studio[] = [
     ],
   },
   {
+    id: 3,
     name: 'Pumpy Studios',
     address: {
       city: 'Hamburg',
@@ -37,6 +43,7 @@ export const studios: Studio[] = [
     },
     pictureUrl: 'assets/pics/studio2.jpg',
     rating: 80,
+    premiumOnly: false,
     features: [
       { isPremium: false, feature: StudioFeature.Benches },
       { isPremium: true, feature: StudioFeature.Cardio },
@@ -44,6 +51,7 @@ export const studios: Studio[] = [
     ],
   },
   {
+    id: 4,
     name: 'Fit & Pump Nürnberg',
     address: {
       city: 'Nürnberg',
@@ -51,6 +59,7 @@ export const studios: Studio[] = [
     },
     pictureUrl: 'assets/pics/studio.jpg',
     rating: 10,
+    premiumOnly: false,
     features: [
       { isPremium: false, feature: StudioFeature.Benches },
       { isPremium: true, feature: StudioFeature.Cardio },
@@ -58,6 +67,7 @@ export const studios: Studio[] = [
     ],
   },
   {
+    id: 5,
     name: 'VitalPump Karlsruhe',
     address: {
       city: 'Karlsruhe',
@@ -65,6 +75,7 @@ export const studios: Studio[] = [
     },
     pictureUrl: 'assets/pics/studio2.jpg',
     rating: 90,
+    premiumOnly: false,
     features: [
       { isPremium: false, feature: StudioFeature.Benches },
       { isPremium: true, feature: StudioFeature.Cardio },

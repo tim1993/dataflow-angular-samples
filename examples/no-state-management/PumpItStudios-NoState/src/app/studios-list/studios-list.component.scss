@@ -1,6 +1,11 @@
 #studios {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+pumpit-studio-tile {
+  justify-self: center;
+  align-self: center;
 }

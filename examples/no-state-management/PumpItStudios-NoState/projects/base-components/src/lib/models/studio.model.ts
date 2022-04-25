@@ -1,4 +1,5 @@
 export interface Studio {
+  id: number;
   name: string;
   address: {
     street: string;
@@ -7,11 +8,11 @@ export interface Studio {
   rating: number;
   pictureUrl: string;
   features: StudioFeatureDeclaration[];
-
+  premiumOnly: boolean;
 }
 
 export interface StudioFeatureDeclaration {
-  feature: StudioFeature,
+  feature: StudioFeature;
   isPremium: boolean;
 }
 
@@ -19,4 +20,5 @@ export enum StudioFeature {
   Benches,
   Cardio,
   PersonalTrainer,
+  Relaxing,
 }

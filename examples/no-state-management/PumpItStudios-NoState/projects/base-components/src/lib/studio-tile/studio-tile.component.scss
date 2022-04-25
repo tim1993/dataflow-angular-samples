@@ -13,3 +13,13 @@ img {
   height: 400px;
 }
 
+.features {
+  padding: 16px 0 16px 0;
+  pumpit-feature-display {
+    padding: 0 8px 0 8px;
+  }
+}
+
+button.needs-premium {
+  background-color: var(--muted-color);
+}

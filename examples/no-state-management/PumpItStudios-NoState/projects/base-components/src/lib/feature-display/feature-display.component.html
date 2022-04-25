@@ -1,1 +1,24 @@
-<span *ngIf="feature?.feature == StudioFeature.Benches"  class="material-icons md-36 md-fitness_center"></span>
+<div
+  [ngClass]="{ 'disabled-premium-feature': feature?.isPremium && !hasPremium }"
+>
+  <span
+    [title]="message"
+    *ngIf="feature?.feature == StudioFeature.Benches"
+    class="material-icons md-36 md-fitness_center"
+  ></span>
+  <span
+    [title]="message"
+    *ngIf="feature?.feature == StudioFeature.Cardio"
+    class="material-icons md-36 md-directions_run"
+  ></span>
+  <span
+    [title]="message"
+    *ngIf="feature?.feature == StudioFeature.PersonalTrainer"
+    class="material-icons md-36 md-supervisor_account"
+  ></span>
+  <span
+    [title]="message"
+    *ngIf="feature?.feature == StudioFeature.Relaxing"
+    class="material-icons md-36 md-self_improvement"
+  ></span>
+</div>

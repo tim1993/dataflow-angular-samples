@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StudioService } from 'projects/base-components/src/lib/studio.service';
 import { Studio } from '../../../projects/base-components/src/lib/models/studio.model';
 
@@ -9,9 +10,13 @@ import { Studio } from '../../../projects/base-components/src/lib/models/studio.
 })
 export class StudiosListComponent implements OnInit {
   studios: Studio[] = [];
-  constructor(private studioService: StudioService) {}
+  constructor(private studioService: StudioService, private router: Router) {}
 
   ngOnInit(): void {
-    this.studioService.get().subscribe((s) => this.studios = s);
+    this.studioService.get().subscribe((s) => (this.studios = s));
+  }
+
+  scheduleVisit(studio: Studio) {
+    this.router.navigate(['/schedule', studio.id]);
   }
 }
