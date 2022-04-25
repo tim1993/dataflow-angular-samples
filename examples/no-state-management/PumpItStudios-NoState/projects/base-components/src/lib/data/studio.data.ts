@@ -8,7 +8,7 @@ export const studios: Studio[] = [
       street: 'Sunset Boulevard 1337',
     },
     pictureUrl: 'assets/pics/studio.jpg',
-    rating: 60,
+    rating: 90,
     features: [
       { isPremium: false, feature: StudioFeature.Benches },
       { isPremium: true, feature: StudioFeature.Cardio },
@@ -22,7 +22,7 @@ export const studios: Studio[] = [
       street: 'Seestraße 42',
     },
     pictureUrl: 'assets/pics/studio1.jpg',
-    rating: 60,
+    rating: 50,
     features: [
       { isPremium: false, feature: StudioFeature.Benches },
       { isPremium: true, feature: StudioFeature.Cardio },
@@ -36,7 +36,7 @@ export const studios: Studio[] = [
       street: 'Hafenstraße 13',
     },
     pictureUrl: 'assets/pics/studio2.jpg',
-    rating: 60,
+    rating: 80,
     features: [
       { isPremium: false, feature: StudioFeature.Benches },
       { isPremium: true, feature: StudioFeature.Cardio },
@@ -50,7 +50,7 @@ export const studios: Studio[] = [
       street: 'Seestraße 42',
     },
     pictureUrl: 'assets/pics/studio.jpg',
-    rating: 80,
+    rating: 10,
     features: [
       { isPremium: false, feature: StudioFeature.Benches },
       { isPremium: true, feature: StudioFeature.Cardio },
