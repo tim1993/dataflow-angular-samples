@@ -4,11 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentService } from 'projects/base-components/src/lib/appointment.service';
 import { Studio } from 'projects/base-components/src/lib/models/studio.model';
 import { StudioService } from 'projects/base-components/src/lib/studio.service';
+import { changeDectionStrategy } from '../app.config';
 
 @Component({
   selector: 'app-add-appointment',
   templateUrl: './add-appointment.component.html',
   styleUrls: ['./add-appointment.component.scss'],
+  changeDetection: changeDectionStrategy,
 })
 export class AddAppointmentComponent implements OnInit {
   public studio?: Studio;

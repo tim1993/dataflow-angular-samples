@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from 'projects/base-components/src/lib/models/user.model';
+import { changeDectionStrategy } from '../app.config';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  changeDetection: changeDectionStrategy,
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = this.fb.group({});

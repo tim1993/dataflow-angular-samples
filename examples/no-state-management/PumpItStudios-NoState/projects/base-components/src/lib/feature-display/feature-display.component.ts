@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { changeDectionStrategy } from 'src/app/app.config';
 import {
   StudioFeatureDeclaration,
   StudioFeature,
@@ -8,6 +9,7 @@ import {
   selector: 'pumpit-feature-display',
   templateUrl: './feature-display.component.html',
   styleUrls: ['./feature-display.component.scss'],
+  changeDetection: changeDectionStrategy,
 })
 export class FeatureDisplayComponent implements OnInit {
   @Input() feature?: StudioFeatureDeclaration;

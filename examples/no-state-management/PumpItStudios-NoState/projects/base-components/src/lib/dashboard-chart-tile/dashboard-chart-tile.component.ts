@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EChartsOption } from 'echarts';
+import { changeDectionStrategy } from 'src/app/app.config';
 
 @Component({
   selector: 'pumpit-dashboard-chart-tile',
   templateUrl: './dashboard-chart-tile.component.html',
   styleUrls: ['./dashboard-chart-tile.component.scss'],
+  changeDetection: changeDectionStrategy,
 })
 export class DashboardChartTileComponent implements OnInit {
   @Input() public chartTitle?: string;
