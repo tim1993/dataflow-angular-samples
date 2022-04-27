@@ -1,10 +1,12 @@
 <div>
   <h2>Studios</h2>
+  <button (click)="upgrade()">Try Premium</button>
   <div id="studios">
     <pumpit-studio-tile
       (scheduleEvent)="scheduleVisit($event)"
       *ngFor="let studio of studios"
       [studio]="studio"
+      [hasPremium]="hasPremium"
     ></pumpit-studio-tile>
   </div>
 </div>
