@@ -18,7 +18,8 @@
       ></pumpit-nav-rail-item>
 
       <pumpit-nav-rail-item
-        (click)="router.navigate(['schedule'])"
+        (click)="router.navigate(['appointments'])"
+        [count]="appointmentCount"
         iconClass="md-event"
       ></pumpit-nav-rail-item>
     </ng-container>

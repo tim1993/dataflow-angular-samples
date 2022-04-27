@@ -12,6 +12,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { StudiosListComponent } from './studios-list/studios-list.component';
 import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AddAppointmentComponent } from './add-appointment/add-appointment.compo
     ProfilePageComponent,
     StudiosListComponent,
     AddAppointmentComponent,
+    AppointmentListComponent,
   ],
   imports: [
     BrowserModule,

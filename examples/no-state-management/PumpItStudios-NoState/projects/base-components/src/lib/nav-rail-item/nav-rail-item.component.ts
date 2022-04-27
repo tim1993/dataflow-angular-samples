@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NavRailItemComponent implements OnInit {
   @Input() public iconClass?: string;
   @Input() public hover = true;
+  @Input() public count?: number;
   constructor() {}
 
   ngOnInit(): void {}

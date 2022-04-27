@@ -38,7 +38,7 @@ export class AddAppointmentComponent implements OnInit {
           time: this.timeCtrl.value,
         })
         .subscribe(() => {
-          this.router.navigate(['/schedule']);
+          this.router.navigate(['/appointments']);
         });
     }
   }

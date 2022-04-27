@@ -11,8 +11,21 @@
 
 .nav-container {
   padding: 8px;
+  position: relative;
   span {
     display: block;
+  }
+
+  .indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 32px;
+    background-color: red;
+    font-size: 10px;
+    padding: 0 4px 0 4px;
+    margin: 0 2px;
+    color: var(--primary-inverse);
   }
 }
 
