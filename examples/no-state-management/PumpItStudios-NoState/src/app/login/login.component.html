@@ -1,5 +1,5 @@
 <div class="grid">
-  <form [formGroup]="loginForm">
+  <form (submit)="login()" [formGroup]="loginForm">
     <label for="user">
       Username
       <input
@@ -23,6 +23,8 @@
         required
       />
     </label>
+
+    <input type="submit" />
   </form>
 </div>
 <div (click)="login()" role="button">Login</div>
