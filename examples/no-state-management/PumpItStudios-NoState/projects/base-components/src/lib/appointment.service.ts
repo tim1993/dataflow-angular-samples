@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, switchMap, timer } from 'rxjs';
 import { Appointment } from './models/appointment.model';
 
 @Injectable({
@@ -11,10 +11,11 @@ export class AppointmentService {
 
   addAppointment(appointment: Appointment) {
     this.appointments.push(appointment);
-    return of(appointment);
+
+    return timer(1).pipe(switchMap(() => of(appointment)));
   }
 
   getAppointments(): Observable<Appointment[]> {
-    return of(this.appointments);
+    return timer(1).pipe(switchMap(() => of(this.appointments)));
   }
 }

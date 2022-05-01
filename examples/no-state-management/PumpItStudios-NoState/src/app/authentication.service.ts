@@ -49,6 +49,11 @@ export class AuthenticationService extends UserService {
     );
   }
 
+  public logout() {
+    sessionStorage.removeItem(AuthenticationService.UserStorageKey);
+    this.user = undefined;
+  }
+
   private persistUser(user: IUser) {
     this.user = user;
     sessionStorage.setItem(
