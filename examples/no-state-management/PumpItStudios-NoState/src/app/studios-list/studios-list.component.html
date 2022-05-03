@@ -1,6 +1,8 @@
 <div>
   <h2>Studios</h2>
-  <button (click)="upgrade()">Try Premium</button>
+  <div role="button" (click)="upgrade()">
+    <span class="material-icons md-stars"></span> Premium
+  </div>
   <div id="studios">
     <pumpit-studio-tile
       (scheduleEvent)="scheduleVisit($event)"

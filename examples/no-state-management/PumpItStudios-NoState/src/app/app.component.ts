@@ -21,8 +21,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.appointmentService.getAppointments().subscribe((appointments) => {
-      this.appointmentCount =
-        appointments.length > 0 ? appointments.length : undefined;
+      this.appointmentCount = appointments.length;
     });
   }
 }

@@ -2,5 +2,5 @@
   <div class="nav-item">
     <span [ngClass]="iconClass ?? ''" class="material-icons md-36"></span>
   </div>
-  <span *ngIf="count" class="indicator">{{ count }}</span>
+  <span *ngIf="count != undefined" class="indicator">{{ count }}</span>
 </div>
