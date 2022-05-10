@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppointmentService } from 'projects/base-components/src/lib/appointment.service';
-import { Appointment } from 'projects/base-components/src/lib/models/appointment.model';
 import { changeDectionStrategy } from '../app.config';
+import { AppointmentFacade } from '../facades/appointment.facade';
 
 @Component({
   selector: 'app-appointment-list',
@@ -10,12 +9,9 @@ import { changeDectionStrategy } from '../app.config';
   changeDetection: changeDectionStrategy,
 })
 export class AppointmentListComponent implements OnInit {
-  public appointments: Appointment[] = [];
-  constructor(private appointmentService: AppointmentService) {}
+  constructor(public appointment: AppointmentFacade) {}
 
   ngOnInit(): void {
-    this.appointmentService
-      .getAppointments()
-      .subscribe((a) => (this.appointments = a));
+    this.appointment.getAppointments();
   }
 }

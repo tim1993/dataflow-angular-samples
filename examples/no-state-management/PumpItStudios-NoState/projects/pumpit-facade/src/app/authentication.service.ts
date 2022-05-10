@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   AccountStatus,
-  IUser,
+  IUser
 } from 'projects/base-components/src/lib/models/user.model';
 import { UserService } from 'projects/base-components/src/lib/user.service';
 import { defer, Observable, of, tap } from 'rxjs';

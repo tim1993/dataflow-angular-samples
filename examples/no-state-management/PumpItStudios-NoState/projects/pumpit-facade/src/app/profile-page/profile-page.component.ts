@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IUser } from 'projects/base-components/src/lib/models/user.model';
+import { AccountStatus } from 'projects/base-components/src/lib/models/user.model';
 import { changeDectionStrategy } from '../app.config';
-import { AuthenticationService } from '../authentication.service';
+import { ApplicationFacade } from '../facades/application.facade';
 
 @Component({
   selector: 'app-profile-page',
@@ -11,18 +11,19 @@ import { AuthenticationService } from '../authentication.service';
   changeDetection: changeDectionStrategy,
 })
 export class ProfilePageComponent implements OnInit {
-  public user?: IUser;
+  public AccountStatus = AccountStatus;
+
   constructor(
-    private authService: AuthenticationService,
+    public application: ApplicationFacade,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.authService.getUser().subscribe((u) => (this.user = u));
+    this.application.getUser();
   }
 
   logout() {
-    this.authService.logout();
+    this.application.logout();
     this.router.navigate(['/']);
   }
 }

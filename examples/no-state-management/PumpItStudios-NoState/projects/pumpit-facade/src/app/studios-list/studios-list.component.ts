@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Studio } from 'projects/base-components/src/lib/models/studio.model';
-import {
-  AccountStatus,
-  IUser,
-} from 'projects/base-components/src/lib/models/user.model';
-import { StudioService } from 'projects/base-components/src/lib/studio.service';
-
 import { changeDectionStrategy } from '../app.config';
-import { AuthenticationService } from '../authentication.service';
+import { ApplicationFacade } from '../facades/application.facade';
+import { StudioFacade } from '../facades/studio.facade';
 
 @Component({
   selector: 'app-studios-list',
@@ -17,21 +12,11 @@ import { AuthenticationService } from '../authentication.service';
   changeDetection: changeDectionStrategy,
 })
 export class StudiosListComponent implements OnInit {
-  studios: Studio[] = [];
-  AccountStatus = AccountStatus;
-  user?: IUser;
-  get hasPremium() {
-    return this.user?.status != AccountStatus.Free;
-  }
-  constructor(
-    public authService: AuthenticationService,
-    private studioService: StudioService,
-    private router: Router
-  ) {}
+  constructor(public studio: StudioFacade, public application: ApplicationFacade, private router: Router) {}
 
   ngOnInit(): void {
-    this.studioService.get().subscribe((s) => (this.studios = s));
-    this.authService.getUser().subscribe((u) => (this.user = u));
+    this.studio.getStudios();
+    this.application.getUser();
   }
 
   scheduleVisit(studio: Studio) {
@@ -39,6 +24,6 @@ export class StudiosListComponent implements OnInit {
   }
 
   upgrade() {
-    this.authService.updateToPremium().subscribe(() => {});
+    this.application.upgradeToPermium().subscribe(() => {});
   }
 }

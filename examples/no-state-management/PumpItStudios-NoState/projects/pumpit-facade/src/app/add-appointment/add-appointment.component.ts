@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppointmentService } from 'projects/base-components/src/lib/appointment.service';
 import { Studio } from 'projects/base-components/src/lib/models/studio.model';
-import { StudioService } from 'projects/base-components/src/lib/studio.service';
 import { changeDectionStrategy } from '../app.config';
+import { AppointmentFacade } from '../facades/appointment.facade';
+import { StudioFacade } from '../facades/studio.facade';
 
 @Component({
   selector: 'app-add-appointment',
@@ -19,26 +19,24 @@ export class AddAppointmentComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private appointment: AppointmentFacade,
+    private studioFacade: StudioFacade,
     private router: Router,
-    private appointment: AppointmentService,
-    private studios: StudioService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const studioId = +params['studio'];
-      this.studios.details(studioId).subscribe((s) => (this.studio = s));
+      this.studioFacade.getDetails(studioId).subscribe((studio) => {
+        this.studio = studio;
+      });
     });
   }
 
   createAppointment() {
     if (this.studio) {
       this.appointment
-        .addAppointment({
-          studio: this.studio,
-          date: this.dateCtrl.value,
-          time: this.timeCtrl.value,
-        })
+        .createAppointment(this.studio, this.dateCtrl.value, this.timeCtrl.value)
         .subscribe(() => {
           this.router.navigate(['/appointments']);
         });

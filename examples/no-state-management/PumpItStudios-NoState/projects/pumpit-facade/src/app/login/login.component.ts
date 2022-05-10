@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from 'projects/base-components/src/lib/models/user.model';
 import { changeDectionStrategy } from '../app.config';
-import { AuthenticationService } from '../authentication.service';
+import { ApplicationFacade } from '../facades/application.facade';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ import { AuthenticationService } from '../authentication.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = this.fb.group({});
   constructor(
-    private authService: AuthenticationService,
+    public application: ApplicationFacade,
     private fb: FormBuilder,
     private router: Router
   ) {}
@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
 
-    this.redirectIfLoggedIn(this.authService.user);
+    this.application.user$.subscribe((user) => {
+      this.redirectIfLoggedIn(user);
+    });
   }
 
   login() {
@@ -33,7 +35,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.authService
+    this.application
       .login(
         this.loginForm?.get('user')?.value,
         this.loginForm?.get('password')?.value
@@ -41,7 +43,7 @@ export class LoginComponent implements OnInit {
       .subscribe(this.redirectIfLoggedIn.bind(this));
   }
 
-  private redirectIfLoggedIn(user?: IUser) {
+  private redirectIfLoggedIn(user?: IUser | null) {
     if (user) {
       this.router.navigate(['/dashboard']);
     }

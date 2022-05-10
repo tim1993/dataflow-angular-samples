@@ -1,3 +1,7 @@
+<ng-container *ngIf="(application.user$ | async) as user">
 <h1>Profile</h1>
+<h4>Willkommen {{ user?.username }}</h4>
+<h6>Accountstatus: {{ AccountStatus[user?.status!] }}</h6>
 
 <button (click)="logout()">Logout</button>
+</ng-container>
