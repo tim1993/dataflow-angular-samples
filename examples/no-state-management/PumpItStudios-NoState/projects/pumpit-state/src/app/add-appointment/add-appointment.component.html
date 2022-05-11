@@ -1,7 +1,7 @@
 <div>
   <pumpit-studio-tile
     [allowSchedule]="false"
-    [studio]="studio"
+    [studio]="(studio$ | async)!"
   ></pumpit-studio-tile>
   <select [formControl]="dateCtrl">
     <option selected value="Tomorrow">Tomorrow</option>

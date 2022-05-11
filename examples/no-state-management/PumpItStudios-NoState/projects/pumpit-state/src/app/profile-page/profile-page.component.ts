@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountStatus } from 'projects/base-components/src/lib/models/user.model';
+import { Select, Store } from '@ngxs/store';
+import { AccountStatus, IUser } from 'projects/base-components/src/lib/models/user.model';
+import { Observable } from 'rxjs';
 import { changeDectionStrategy } from '../app.config';
-import { ApplicationFacade } from '../facades/application.facade';
+import { Logout } from '../state/app.actions';
+import { AppSelectors } from '../state/app.selectors';
 
 @Component({
   selector: 'app-profile-page',
@@ -11,19 +14,21 @@ import { ApplicationFacade } from '../facades/application.facade';
   changeDetection: changeDectionStrategy,
 })
 export class ProfilePageComponent implements OnInit {
+  @Select(AppSelectors.getUser)
+  public user$!: Observable<IUser>;
+
   public AccountStatus = AccountStatus;
 
   constructor(
-    public application: ApplicationFacade,
+    private store: Store,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.application.getUser();
   }
 
   logout() {
-    this.application.logout();
+    this.store.dispatch(new Logout());
     this.router.navigate(['/']);
   }
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { EChartsOption } from 'echarts';
+import { Observable } from 'rxjs';
 import { changeDectionStrategy } from '../app.config';
-import { DashboardFacade } from '../facades/dashboard.facade';
+import { GetDashboardData } from './state/dashboard.actions';
+import { DashboardSelectors } from './state/dashboard.selectors';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +13,12 @@ import { DashboardFacade } from '../facades/dashboard.facade';
   changeDetection: changeDectionStrategy,
 })
 export class DashboardComponent implements OnInit {
-  constructor(public dashboard: DashboardFacade) {}
+  @Select(DashboardSelectors.getDashboardData)
+  public visitsData$!: Observable<EChartsOption>;
+
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.dashboard.getDashboardData();
+    this.store.dispatch(new GetDashboardData());
   }
 }

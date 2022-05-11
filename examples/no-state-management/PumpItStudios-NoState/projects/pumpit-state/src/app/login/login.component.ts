@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Select, Store } from '@ngxs/store';
 import { IUser } from 'projects/base-components/src/lib/models/user.model';
+import { Observable } from 'rxjs';
 import { changeDectionStrategy } from '../app.config';
-import { ApplicationFacade } from '../facades/application.facade';
+import { Login } from '../state/app.actions';
+import { AppSelectors } from '../state/app.selectors';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +15,12 @@ import { ApplicationFacade } from '../facades/application.facade';
   changeDetection: changeDectionStrategy,
 })
 export class LoginComponent implements OnInit {
+  @Select(AppSelectors.getUser)
+  public user$!: Observable<IUser>;
+
   loginForm: FormGroup = this.fb.group({});
   constructor(
-    public application: ApplicationFacade,
+    private store: Store,
     private fb: FormBuilder,
     private router: Router
   ) {}
@@ -25,7 +31,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
 
-    this.application.user$.subscribe((user) => {
+    this.user$.subscribe((user) => {
       this.redirectIfLoggedIn(user);
     });
   }
@@ -35,10 +41,12 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.application
-      .login(
-        this.loginForm?.get('user')?.value,
-        this.loginForm?.get('password')?.value
+    this.store
+      .dispatch(
+        new Login(
+          this.loginForm?.get('user')?.value,
+          this.loginForm?.get('password')?.value
+        )
       )
       .subscribe(this.redirectIfLoggedIn.bind(this));
   }

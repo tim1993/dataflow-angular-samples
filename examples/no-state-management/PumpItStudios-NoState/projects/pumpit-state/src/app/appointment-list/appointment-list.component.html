@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let appointment of appointment.appointments$ | async">
+    <tr *ngFor="let appointment of appointments$ | async">
       <td>{{ appointment.date }}</td>
       <td>{{ appointment.time }}</td>
       <td>

@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Select, Store } from '@ngxs/store';
 import { Studio } from 'projects/base-components/src/lib/models/studio.model';
+import { AccountStatus, IUser } from 'projects/base-components/src/lib/models/user.model';
+import { Observable } from 'rxjs';
 import { changeDectionStrategy } from '../app.config';
-import { ApplicationFacade } from '../facades/application.facade';
-import { StudioFacade } from '../facades/studio.facade';
+import { UpgradeToPremium } from '../state/app.actions';
+import { AppSelectors } from '../state/app.selectors';
+import { GetStudios } from './state/studio.actions';
+import { StudioSelectors } from './state/studio.selectors';
 
 @Component({
   selector: 'app-studios-list',
@@ -12,11 +17,22 @@ import { StudioFacade } from '../facades/studio.facade';
   changeDetection: changeDectionStrategy,
 })
 export class StudiosListComponent implements OnInit {
-  constructor(public studio: StudioFacade, public application: ApplicationFacade, private router: Router) {}
+  @Select(StudioSelectors.getStudios)
+  public studios$!: Observable<Studio[]>;
+
+  @Select(AppSelectors.getUser)
+  public user$!: Observable<IUser>;
+
+  public hasPremium: boolean = false;
+
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
-    this.studio.getStudios();
-    this.application.getUser();
+    this.store.dispatch(new GetStudios());
+    this.user$.subscribe((user) => {
+       this.hasPremium = user?.status != AccountStatus.Free;
+       console.dir(this.hasPremium);
+    })
   }
 
   scheduleVisit(studio: Studio) {
@@ -24,6 +40,6 @@ export class StudiosListComponent implements OnInit {
   }
 
   upgrade() {
-    this.application.upgradeToPermium().subscribe(() => {});
+    this.store.dispatch(new UpgradeToPremium());
   }
 }
