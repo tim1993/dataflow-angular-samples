@@ -1,0 +1,45 @@
+<div class="shell">
+  <pumpit-nav-rail>
+    <pumpit-nav-rail-item
+      pumpRailTop
+      [hover]="false"
+      iconClass="md-fitness_center"
+    ></pumpit-nav-rail-item>
+
+    <ng-container pumpRailItems *ngIf="authService.user">
+      <pumpit-nav-rail-item
+        (click)="router.navigate(['dashboard'])"
+        iconClass="md-dashboard"
+      ></pumpit-nav-rail-item>
+
+      <pumpit-nav-rail-item
+        (click)="router.navigate(['studios'])"
+        iconClass="md-sports_gymnastics"
+      ></pumpit-nav-rail-item>
+
+      <pumpit-nav-rail-item
+        (click)="router.navigate(['appointments'])"
+        [count]="appointmentCount"
+        iconClass="md-event"
+      ></pumpit-nav-rail-item>
+    </ng-container>
+
+    <ng-container pumpRailBottom>
+      <pumpit-nav-rail-item
+        (click)="router.navigate(['profile'])"
+        *ngIf="authService.user"
+        iconClass="md-account_circle"
+      ></pumpit-nav-rail-item>
+
+      <pumpit-nav-rail-item
+        (click)="router.navigate(['login'])"
+        *ngIf="!authService.user"
+        iconClass="md-login"
+      ></pumpit-nav-rail-item>
+    </ng-container>
+  </pumpit-nav-rail>
+
+  <main class="container-fluid">
+    <router-outlet></router-outlet>
+  </main>
+</div>

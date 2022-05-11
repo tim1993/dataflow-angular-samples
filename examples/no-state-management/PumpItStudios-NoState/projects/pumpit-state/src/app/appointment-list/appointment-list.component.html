@@ -1,0 +1,19 @@
+<table role="grid">
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+      <th scope="col">Time</th>
+      <th>Studio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appointment of appointment.appointments$ | async">
+      <td>{{ appointment.date }}</td>
+      <td>{{ appointment.time }}</td>
+      <td>
+        {{ appointment.studio.name }} - {{ appointment.studio.address.street }}
+        {{ appointment.studio.address.city }}
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -245,6 +245,109 @@
           }
         }
       }
+    },
+    "pumpit-state": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/pumpit-state",
+      "sourceRoot": "projects/pumpit-state/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/pumpit-state",
+            "index": "projects/pumpit-state/src/index.html",
+            "main": "projects/pumpit-state/src/main.ts",
+            "polyfills": "projects/pumpit-state/src/polyfills.ts",
+            "tsConfig": "projects/pumpit-state/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/pumpit-state/src/favicon.ico",
+              "projects/pumpit-state/src/assets"
+            ],
+            "styles": [
+              "projects/pumpit-state/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/pumpit-state/src/environments/environment.ts",
+                  "with": "projects/pumpit-state/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "pumpit-state:build:production"
+            },
+            "development": {
+              "browserTarget": "pumpit-state:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "pumpit-state:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pumpit-state/src/test.ts",
+            "polyfills": "projects/pumpit-state/src/polyfills.ts",
+            "tsConfig": "projects/pumpit-state/tsconfig.spec.json",
+            "karmaConfig": "projects/pumpit-state/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/pumpit-state/src/favicon.ico",
+              "projects/pumpit-state/src/assets"
+            ],
+            "styles": [
+              "projects/pumpit-state/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   },
   "defaultProject": "PumpItStudios-NoState"

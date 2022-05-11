@@ -1,0 +1,14 @@
+<div>
+  <h2>Studios</h2>
+  <div role="button" (click)="upgrade()">
+    <span class="material-icons md-stars"></span> Premium
+  </div>
+  <div id="studios">
+    <pumpit-studio-tile
+      (scheduleEvent)="scheduleVisit($event)"
+      *ngFor="let studio of studio.studio$ | async"
+      [studio]="studio"
+      [hasPremium]="application.hasPremium"
+    ></pumpit-studio-tile>
+  </div>
+</div>
