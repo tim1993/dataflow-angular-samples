@@ -13,7 +13,7 @@ export const getAppointments =
     return appointmentService.getAppointments().pipe(
       tap((appointments) => {
         patchState({
-          appointments: [...getState().appointments, ...appointments],
+          appointments: appointments.concat(getState().appointments),
         });
       })
     );
@@ -31,14 +31,7 @@ export const createAppointment =
           studio: action.studio,
           date: action.date,
           time: action.time,
-        })
-        .pipe(
-          tap((appointment) => {
-            patchState({
-              appointments: [...getState().appointments, appointment],
-            });
-          })
-        );
+        });
     }
 
     return;
