@@ -21,17 +21,13 @@ export const getAppointments =
 
 export const createAppointment =
   (appointmentService: AppointmentService) =>
-  (
-    { patchState, getState }: StateContext<IAppointmentStateModel>,
-    action: CreateAppointment
-  ) => {
+  ({}: StateContext<IAppointmentStateModel>, action: CreateAppointment) => {
     if (action.studio) {
-      return appointmentService
-        .addAppointment({
-          studio: action.studio,
-          date: action.date,
-          time: action.time,
-        });
+      return appointmentService.addAppointment({
+        studio: action.studio,
+        date: action.date,
+        time: action.time,
+      });
     }
 
     return;
