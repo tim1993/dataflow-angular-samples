@@ -28,6 +28,7 @@
       <pumpit-nav-rail-item
         (click)="router.navigate(['profile'])"
         *ngIf="authService.user"
+        [ngClass]="{ premium: hasPremium }"
         iconClass="md-account_circle"
       ></pumpit-nav-rail-item>
 

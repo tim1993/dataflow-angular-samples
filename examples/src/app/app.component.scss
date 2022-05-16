@@ -9,3 +9,7 @@ pumpit-nav-rail-item {
 main {
   background-color: var(--primary-focus);
 }
+
+:host ::ng-deep pumpit-nav-rail-item.premium * {
+  color: yellow;
+}
