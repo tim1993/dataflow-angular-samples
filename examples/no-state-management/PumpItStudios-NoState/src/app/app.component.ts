@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppointmentService } from 'projects/base-components/src/lib/appointment.service';
+import { Appointment } from 'projects/base-components/src/lib/models/appointment.model';
 import { changeDectionStrategy } from './app.config';
 import { AuthenticationService } from './authentication.service';
 
@@ -12,7 +13,11 @@ import { AuthenticationService } from './authentication.service';
 })
 export class AppComponent implements OnInit {
   title = 'PumpItStudios-NoState';
-  appointmentCount?: number;
+  private appointments?: Appointment[];
+
+  get appointmentCount(): number {
+    return this.appointments?.length ?? 0;
+  }
   constructor(
     public authService: AuthenticationService,
     public router: Router,
@@ -21,7 +26,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.appointmentService.getAppointments().subscribe((appointments) => {
-      this.appointmentCount = appointments.length;
+      this.appointments = appointments;
     });
   }
 }
