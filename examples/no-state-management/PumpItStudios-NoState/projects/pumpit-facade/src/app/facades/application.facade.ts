@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
   AccountStatus,
-  IUser
+  IUser,
 } from 'projects/base-components/src/lib/models/user.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
 import { AuthenticationService } from '../authentication.service';
 
 @Injectable({
@@ -17,8 +17,8 @@ export class ApplicationFacade {
 
   constructor(private authService: AuthenticationService) {}
 
-  public get hasPremium(): boolean {
-    return this.user?.status != AccountStatus.Free;
+  public hasPremium(): Observable<boolean> {
+    return this.user$.pipe(map((u) => u?.status != AccountStatus.Free));
   }
 
   public getUser() {
@@ -28,12 +28,14 @@ export class ApplicationFacade {
     });
   }
 
-  public upgradeToPermium(): Observable<boolean> {
-    return this.authService.updateToPremium();
+  public upgradeToPermium() {
+    return this.authService.updateToPremium().subscribe(() => this.getUser());
   }
 
-  public login(user: string, password: string): Observable<IUser> {
-    return this.authService.login(user, password);
+  public login(user: string, password: string) {
+    return this.authService
+      .login(user, password)
+      .subscribe(() => this.getUser());
   }
 
   public logout() {
