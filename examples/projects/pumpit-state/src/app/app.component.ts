@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { GetAppointments } from './appointment-list/state/appointment.actions';
 import { AppointmentSelectors } from './appointment-list/state/appointment.selectors';
 import { AuthenticationService } from './authentication.service';
+import { AppSelectors } from './state/app.selectors';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,9 @@ import { AuthenticationService } from './authentication.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  @Select(AppSelectors.hasPremium)
+  public hasPremium$!: Observable<boolean>;
+
   @Select(AppointmentSelectors.getAppointments)
   public appointments$!: Observable<Appointment[]>;
 

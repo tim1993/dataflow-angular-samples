@@ -8,7 +8,7 @@
       (scheduleEvent)="scheduleVisit($event)"
       *ngFor="let studio of studios$ | async"
       [studio]="studio"
-      [hasPremium]="hasPremium"
+      [hasPremium]="(hasPremium$ | async)!"
     ></pumpit-studio-tile>
   </div>
 </div>

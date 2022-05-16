@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Studio } from 'projects/base-components/src/lib/models/studio.model';
-import { AccountStatus, IUser } from 'projects/base-components/src/lib/models/user.model';
+import { IUser } from 'projects/base-components/src/lib/models/user.model';
 import { Observable } from 'rxjs';
 import { changeDectionStrategy } from '../app.config';
 import { UpgradeToPremium } from '../state/app.actions';
@@ -17,22 +17,19 @@ import { StudioSelectors } from './state/studio.selectors';
   changeDetection: changeDectionStrategy,
 })
 export class StudiosListComponent implements OnInit {
+  @Select(AppSelectors.hasPremium)
+  public hasPremium$!: Observable<boolean>;
+
   @Select(StudioSelectors.getStudios)
   public studios$!: Observable<Studio[]>;
 
   @Select(AppSelectors.getUser)
   public user$!: Observable<IUser>;
 
-  public hasPremium: boolean = false;
-
   constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     this.store.dispatch(new GetStudios());
-    this.user$.subscribe((user) => {
-       this.hasPremium = user?.status != AccountStatus.Free;
-       console.dir(this.hasPremium);
-    })
   }
 
   scheduleVisit(studio: Studio) {

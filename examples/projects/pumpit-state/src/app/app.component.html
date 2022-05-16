@@ -27,6 +27,7 @@
     <ng-container pumpRailBottom>
       <pumpit-nav-rail-item
         (click)="router.navigate(['profile'])"
+        [ngClass]="{ premium: (hasPremium$ | async) === true }"
         *ngIf="authService.user"
         iconClass="md-account_circle"
       ></pumpit-nav-rail-item>
