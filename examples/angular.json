@@ -214,10 +214,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "facade:build:production"
+              "browserTarget": "pumpit-facade:build:production"
             },
             "development": {
-              "browserTarget": "facade:build:development"
+              "browserTarget": "pumpit-facade:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -225,7 +225,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "facade:build"
+            "browserTarget": "pumpit-facade:build"
           }
         },
         "test": {
@@ -273,9 +273,7 @@
               "projects/pumpit-state/src/favicon.ico",
               "projects/pumpit-state/src/assets"
             ],
-            "styles": [
-              "projects/pumpit-state/src/styles.scss"
-            ],
+            "styles": ["projects/pumpit-state/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -341,9 +339,7 @@
               "projects/pumpit-state/src/favicon.ico",
               "projects/pumpit-state/src/assets"
             ],
-            "styles": [
-              "projects/pumpit-state/src/styles.scss"
-            ],
+            "styles": ["projects/pumpit-state/src/styles.scss"],
             "scripts": []
           }
         }
