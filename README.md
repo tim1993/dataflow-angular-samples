@@ -4,7 +4,7 @@ This is the code sample for the presentation Data Flow on Steroids - The fullbod
 This sample is implementing three concepts:
 1. Angular application without state management
 2. Angular application with facades as abstraction layer
-3. Angular application with state management framework NGXS
+3. Angular application with state management framework [NGXS](https://www.ngxs.io/)
 
 # Getting started
 
