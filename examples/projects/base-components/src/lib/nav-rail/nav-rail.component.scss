@@ -1,0 +1,23 @@
+aside {
+  display: grid;
+  position: sticky;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 72px;
+  grid-template-rows: 64px 2fr 64px 12px;
+  border-right: 1px solid black;
+  background-color: var(--primary);
+}
+
+.main-items {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
