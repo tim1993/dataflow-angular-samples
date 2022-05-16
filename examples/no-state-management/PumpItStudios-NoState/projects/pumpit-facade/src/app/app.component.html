@@ -19,7 +19,7 @@
 
       <pumpit-nav-rail-item
         (click)="router.navigate(['appointments'])"
-        [count]="appointmentCount"
+        [count]="(appointment.appointments$ | async)?.length"
         iconClass="md-event"
       ></pumpit-nav-rail-item>
     </ng-container>

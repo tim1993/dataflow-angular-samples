@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppointmentService } from 'projects/base-components/src/lib/appointment.service';
 import { changeDectionStrategy } from './app.config';
 import { AuthenticationService } from './authentication.service';
+import { AppointmentFacade } from './facades/appointment.facade';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +12,13 @@ import { AuthenticationService } from './authentication.service';
 })
 export class AppComponent implements OnInit {
   title = 'PumpItStudios-Facade';
-  appointmentCount?: number;
   constructor(
     public authService: AuthenticationService,
     public router: Router,
-    private appointmentService: AppointmentService
+    public appointment: AppointmentFacade
   ) {}
 
   ngOnInit(): void {
-    this.appointmentService.getAppointments().subscribe((appointments) => {
-      this.appointmentCount = appointments.length;
-    });
+    this.appointment.getAppointments();
   }
 }

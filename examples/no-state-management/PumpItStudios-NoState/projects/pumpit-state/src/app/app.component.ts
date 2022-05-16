@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppointmentService } from 'projects/base-components/src/lib/appointment.service';
+import { Select, Store } from '@ngxs/store';
+import { Appointment } from 'projects/base-components/src/lib/models/appointment.model';
+import { Observable } from 'rxjs';
+import { GetAppointments } from './appointment-list/state/appointment.actions';
+import { AppointmentSelectors } from './appointment-list/state/appointment.selectors';
 import { AuthenticationService } from './authentication.service';
 
 @Component({
@@ -9,17 +13,17 @@ import { AuthenticationService } from './authentication.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  @Select(AppointmentSelectors.getAppointments)
+  public appointments$!: Observable<Appointment[]>;
+
   title = 'PumpItStudios-State';
-  appointmentCount?: number;
   constructor(
     public authService: AuthenticationService,
     public router: Router,
-    private appointmentService: AppointmentService
+    private store: Store,
   ) {}
 
   ngOnInit(): void {
-    this.appointmentService.getAppointments().subscribe((appointments) => {
-      this.appointmentCount = appointments.length;
-    });
+    this.store.dispatch(new GetAppointments());
   }
 }
