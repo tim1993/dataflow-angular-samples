@@ -13,30 +13,27 @@ import { StudioFacade } from '../facades/studio.facade';
   changeDetection: changeDectionStrategy,
 })
 export class AddAppointmentComponent implements OnInit {
-  public studio?: Studio;
   public timeCtrl = new FormControl('8:00');
   public dateCtrl = new FormControl('Tomorrow');
 
   constructor(
+    public studioFacade: StudioFacade,
     private route: ActivatedRoute,
     private appointment: AppointmentFacade,
-    private studioFacade: StudioFacade,
     private router: Router,
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const studioId = +params['studio'];
-      this.studioFacade.getDetails(studioId).subscribe((studio) => {
-        this.studio = studio;
-      });
+      this.studioFacade.getStudioDetails(studioId);
     });
   }
 
-  createAppointment() {
-    if (this.studio) {
+  createAppointment(studio: Studio) {
+    if (studio) {
       this.appointment
-        .createAppointment(this.studio, this.dateCtrl.value, this.timeCtrl.value)
+        .createAppointment(studio, this.dateCtrl.value, this.timeCtrl.value)
         .subscribe(() => {
           this.router.navigate(['/appointments']);
         });

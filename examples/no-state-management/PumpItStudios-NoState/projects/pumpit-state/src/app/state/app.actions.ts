@@ -11,7 +11,7 @@ export class Logout {
 }
 
 export class UpgradeToPremium {
-  public static readonly type = '[App] UpgradeToPermium';
+  public static readonly type = '[App] UpgradeToPremium';
 
   constructor() {}
 }

@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="(studioFacade.studio$ | async) as studio">
   <pumpit-studio-tile
     [allowSchedule]="false"
     [studio]="studio"
@@ -15,5 +15,5 @@
     <option value="11:00">11:00</option>
   </select>
 
-  <button (click)="createAppointment()">Schedule</button>
+  <button (click)="createAppointment(studio)">Schedule</button>
 </div>

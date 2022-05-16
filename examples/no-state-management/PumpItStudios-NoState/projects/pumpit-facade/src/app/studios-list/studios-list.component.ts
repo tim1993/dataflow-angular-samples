@@ -24,6 +24,6 @@ export class StudiosListComponent implements OnInit {
   }
 
   upgrade() {
-    this.application.upgradeToPermium().subscribe(() => {});
+    this.application.upgradeToPremium();
   }
 }

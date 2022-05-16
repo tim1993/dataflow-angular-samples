@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IUser } from 'projects/base-components/src/lib/models/user.model';
+import { AccountStatus, IUser } from 'projects/base-components/src/lib/models/user.model';
 import { changeDectionStrategy } from '../app.config';
 import { AuthenticationService } from '../authentication.service';
 
@@ -11,6 +11,7 @@ import { AuthenticationService } from '../authentication.service';
   changeDetection: changeDectionStrategy,
 })
 export class ProfilePageComponent implements OnInit {
+  public AccountStatus = AccountStatus;
   public user?: IUser;
   constructor(
     private authService: AuthenticationService,

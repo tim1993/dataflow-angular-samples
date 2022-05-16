@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import {
   AccountStatus,
-  IUser,
+  IUser
 } from 'projects/base-components/src/lib/models/user.model';
-import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { AuthenticationService } from '../authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApplicationFacade {
-  private user: IUser | null = null;
   private userSubject = new BehaviorSubject<IUser | null>(null);
 
   public user$ = this.userSubject.asObservable();
@@ -23,12 +22,11 @@ export class ApplicationFacade {
 
   public getUser() {
     this.authService.getUser().subscribe((u) => {
-      this.user = u;
       this.userSubject.next(u);
     });
   }
 
-  public upgradeToPermium() {
+  public upgradeToPremium() {
     return this.authService.updateToPremium().subscribe(() => this.getUser());
   }
 

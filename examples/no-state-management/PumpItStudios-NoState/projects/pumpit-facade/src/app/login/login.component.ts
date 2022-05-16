@@ -35,12 +35,10 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.application
-      .login(
-        this.loginForm?.get('user')?.value,
-        this.loginForm?.get('password')?.value
-      )
-      .subscribe(this.redirectIfLoggedIn.bind(this));
+    this.application.login(
+      this.loginForm?.get('user')?.value,
+      this.loginForm?.get('password')?.value
+    );
   }
 
   private redirectIfLoggedIn(user?: IUser | null) {
